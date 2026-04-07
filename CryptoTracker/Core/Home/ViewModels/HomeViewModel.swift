@@ -74,10 +74,10 @@ class HomeViewModel: ObservableObject {
         portfolioDataService.updatePortfolio(coin: coin, amount: amount)
     }
     
-    func reloadData() {
+    func reloadData() async {
         isLoading = true
-        coinDataService.getCoins()
-        marketDataService.getData()
+        await coinDataService.getCoinsAsync()
+        await marketDataService.getDataAsync()
         HapticManager.notification(type: .success)
     }
     

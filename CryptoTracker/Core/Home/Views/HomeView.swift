@@ -7,6 +7,7 @@
 
 import SwiftUI
 import Combine
+import LocalAuthentication
 
 struct HomeView: View {
     
@@ -16,6 +17,7 @@ struct HomeView: View {
     @State private var showSettingsView: Bool = false // new sheet
     @State private var selectedCoin: CoinModel? = nil
     @State private var showDetailView: Bool = false
+    @State private var hasAuthenticated: Bool = false
     
     
     var body: some View {
@@ -105,12 +107,42 @@ extension HomeView {
             CircleButtonView(iconName: "chevron.right")
                 .rotationEffect(Angle(degrees: showPortfolio ? 180 : 0))
                 .onTapGesture {
-                    withAnimation(.spring()) {
-                        showPortfolio.toggle()
+                    if hasAuthenticated {
+                        withAnimation(.spring()) {
+                            showPortfolio.toggle()
+                        }
+                    } else {
+                        authenticate()
                     }
+                    
                 }
         }
         .padding(.horizontal)
+    }
+    
+    private func authenticate() {
+        let context = LAContext()
+        var error: NSError?
+        
+        if context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error) {
+            context.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: "This is for security reasons") { success, authenticationError in
+                DispatchQueue.main.async {
+                    if success {
+                        withAnimation(.spring()) {
+                            showPortfolio.toggle()
+                            hasAuthenticated = true
+                        }
+                    } else {
+                        print("There was a problem")
+                    }
+                }
+                
+            }
+        } else {
+            print("Biometrics not available")
+        }
+        
+        
     }
     
     private var allCoinsList: some View {
@@ -126,6 +158,9 @@ extension HomeView {
             }
         }
         .listStyle(PlainListStyle())
+        .refreshable {
+            await vm.reloadData()
+        }
     }
     private var portfolioCoinsList: some View {
         List {
@@ -196,14 +231,7 @@ extension HomeView {
                 }
             }
             
-            Button {
-                withAnimation(.linear(duration: 2.0)) {
-                    vm.reloadData()
-                }
-            } label: {
-                Image(systemName: "goforward")
-            }
-            .rotationEffect(Angle(degrees: vm.isLoading ? 360 : 0), anchor: .center)
+            
 
         }
         .font(.caption)

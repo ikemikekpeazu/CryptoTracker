@@ -29,6 +29,27 @@ class CoinDataService {
             })
             
     }
+    
+    
+    func getCoinsAsync() async {
+        guard let url = URL(string: "https://pro-api.coingecko.com/api/v3/coins/markets?vs_currency=usd&price_change_percentage=24h&order=market_cap_desc&per_page=250&page=1&sparkline=true&x_cg_pro_api_key=CG-Umqfx8huexZnrRJvWTJYwfRz") else { return }
+        
+        await withCheckedContinuation { continuation in
+            coinSubscription = NetworkingManager.download(url: url)
+                .decode(type: [CoinModel].self, decoder: JSONDecoder())
+                .receive(on: DispatchQueue.main)
+                .sink(
+                    receiveCompletion: { _ in
+                        continuation.resume()
+                    },
+                    receiveValue: { [weak self] returnedCoins in
+                        self?.allCoins = returnedCoins
+                    }
+                )
+        }
+    }
+    
+    
 }
 
 

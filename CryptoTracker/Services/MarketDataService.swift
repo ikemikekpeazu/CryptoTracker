@@ -29,4 +29,22 @@ class MarketDataService {
             })
             
     }
+    
+    func getDataAsync() async {
+        guard let url = URL(string: "https://api.coingecko.com/api/v3/global?x_cg_demo_api_key=") else { return }
+        
+        await withCheckedContinuation { continuation in
+            marketDataSubscription = NetworkingManager.download(url: url)
+                .decode(type: GlobalData.self, decoder: JSONDecoder())
+                .receive(on: DispatchQueue.main)
+                .sink(
+                    receiveCompletion: { _ in
+                        continuation.resume()
+                    },
+                    receiveValue: { [weak self] returnedData in
+                        self?.marketData = returnedData.data
+                    }
+                )
+        }
+    }
 }
