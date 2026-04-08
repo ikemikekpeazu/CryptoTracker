@@ -6,11 +6,14 @@
 //
 
 import SwiftUI
+import Combine
 
 struct CoinRowView: View {
     
     let coin: CoinModel
     let showHoldingsColumn: Bool
+    let timer = Timer.publish(every: 0.15, on: .main, in: .common).autoconnect()
+    @State private var shake: Bool = false
     
     var body: some View {
         HStack(spacing: 0) {
@@ -44,6 +47,16 @@ extension CoinRowView {
                 .frame(minWidth: 30)
             CoinImageView(coin: coin)
                 .frame(width: 30, height: 30)
+                .rotationEffect(.degrees(shake ? -20 : 20))
+                .animation(
+                    .easeInOut(duration: 0.1)
+                        .repeatForever(autoreverses: true),
+                    value: shake
+                    
+                )
+                .onAppear{
+                    shake = true
+                }
             Text(coin.symbol.uppercased())
                 .font(.headline)
                 .padding(.leading, 6)
