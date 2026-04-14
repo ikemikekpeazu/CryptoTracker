@@ -23,12 +23,20 @@ struct ChartView2: View {
     
     var body: some View {
         VStack {
+            
+            Picker("Timeframe", selection: $vm.selectedRange) {
+                ForEach(ChartRange.allCases, id: \.self) { x in
+                    Text(x.rawValue).tag(x)
+                }
+            }
+            .pickerStyle(.segmented)
+            .padding(.horizontal)
             VStack(spacing: 4) {
                 if let selectedDate, let point = vm.chartPoints.min(by: {
                     abs($0.date.timeIntervalSince(selectedDate)) < abs($1.date.timeIntervalSince(selectedDate))
                 }) {
                     
-                    Text(point.date.formatted(.dateTime.month(.abbreviated).day().year().hour().minute()))
+                    Text(point.date, format: dateFormat)
                                 .font(.caption)
                                 .fontWeight(.semibold)
                                 .foregroundStyle(Color.theme.accent)
@@ -75,7 +83,7 @@ struct ChartView2: View {
                     }
                 }
                 
-                RuleMark(y: .value("Baseline", vm.minY))
+                RuleMark(y: .value("Baseline", vm.minY - vm.padding * 0.2))
                     .foregroundStyle(.gray.opacity(0.3))
                     .lineStyle(StrokeStyle(lineWidth: 0.2))
                 
@@ -84,16 +92,16 @@ struct ChartView2: View {
             //        .padding(.horizontal, 10)
             .foregroundStyle(.clear)
             .chartXSelection(value: $selectedDate)
-            .chartYScale(domain: (vm.minY)...(vm.maxY + vm.padding))
+            .chartYScale(domain: (vm.minY - vm.padding * 0.2)...(vm.maxY + vm.padding))
             .chartXAxis {
-                AxisMarks(values: .stride(by: .hour, count: 4)) { value in
+                AxisMarks(values: .stride(by: xAxisStride, count: xAxisCount)) { value in
                     
                     AxisGridLine()
                         .foregroundStyle(.gray.opacity(0.3))
                     
                     AxisValueLabel {
                         if let date = value.as(Date.self) {
-                            Text(date, format: .dateTime.hour())
+                            Text(date, format: xAxisFormat)
                         }
                     }
                 }
@@ -120,6 +128,74 @@ struct ChartView2: View {
             }
         }
     }
+    
+    private var xAxisStride: Calendar.Component {
+        switch vm.selectedRange {
+        case .oneDay:
+            return .hour
+        case .oneWeek, .oneMonth:
+            return .day
+        case .threeMonth, .sixMonth:
+            return .month
+        case .oneYear, .ytd:
+            return .month
+        case .twoYear, .fiveYear, .tenYear:
+            return .year
+        }
+    }
+
+    private var xAxisCount: Int {
+        switch vm.selectedRange {
+        case .oneDay:
+            return 4
+        case .oneWeek:
+            return 1
+        case .oneMonth:
+            return 3
+        case .threeMonth:
+            return 1
+        case .sixMonth:
+            return 2
+        case .oneYear,.ytd:
+            return 1
+        case .twoYear, .fiveYear, .tenYear:
+            return 1
+        }
+    }
+
+    private var xAxisFormat: Date.FormatStyle {
+        switch vm.selectedRange {
+        case .oneDay:
+            return .dateTime.hour()
+        case .oneWeek, .oneMonth:
+            return .dateTime.day()
+        case .threeMonth, .sixMonth:
+            return .dateTime.month(.abbreviated)
+        case .oneYear, .ytd:
+            return .dateTime.month()
+        case .twoYear, .fiveYear, .tenYear:
+            return .dateTime.year()
+        }
+    }
+    
+    private var dateFormat: Date.FormatStyle {
+        switch vm.selectedRange {
+        case .oneDay:
+            return .dateTime.month(.abbreviated).day().year().hour().minute()
+            
+        case .oneWeek:
+            return .dateTime.month(.abbreviated).day().year().hour().minute()
+            
+        case .oneMonth:
+            return .dateTime.month(.abbreviated).day().year()
+            
+        case .threeMonth, .sixMonth, .ytd, .oneYear, .twoYear, .fiveYear, .tenYear:
+            return .dateTime.month(.abbreviated).day().year()
+            
+        
+        }
+    }
+    
 }
 
 #Preview {

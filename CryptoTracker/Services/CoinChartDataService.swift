@@ -13,16 +13,19 @@ class CoinChartDataService {
     @Published var chartPoints: [ChartPoint] = []
     var coinChartDataSubscription: AnyCancellable?
     let coin: CoinModel
+    var range: ChartRange
     
-    init(coin: CoinModel) {
+    init(coin: CoinModel, range: ChartRange) {
         self.coin = coin
+        self.range = range
         getChartData()
     }
    
     func getChartData() {
-        guard let url = URL(string: createURL()) else { return }
+        guard let url = URL(string: createURL(range: range)) else { return }
         
         coinChartDataSubscription = NetworkingManager.download(url: url)
+            .subscribe(on: DispatchQueue.global(qos: .userInitiated))
             .decode(type: CoinChartModel.self, decoder: JSONDecoder())
             .map { [weak self] model in
                 self?.mapToChartPoints(from: model) ?? []
@@ -60,7 +63,7 @@ class CoinChartDataService {
                  print("Couldn't get price")
                  return nil
              }
-             guard let date = dateFormatter.date(from: datetime) else {
+             guard let date = parseDate(datetime) else {
                  print("Couldn't get date", datetime)
                  return nil
              }
@@ -69,14 +72,29 @@ class CoinChartDataService {
         }
     }
     
-    private func createURL() -> String {
+    private func createURL(range: ChartRange) -> String {
         let now = Date()
-        let start = Calendar.current.date(byAdding: .day, value: -1, to: now)!
+//        let start = Calendar.current.date(byAdding: .day, value: -1, to: now)!
         
-        let startString = dateFormatter.string(from: start)
+        let startString = dateFormatter.string(from: range.startDate)
         let endString = dateFormatter.string(from: now)
         
-        return "https://api.twelvedata.com/time_series?symbol=\(coin.symbol)/USD&interval=5min&timezone=America/New_York&start_date=\(startString)&end_date=\(endString)&apikey=3d7e79efc6604a1fa500406353774531"
+        return "https://api.twelvedata.com/time_series?symbol=\(coin.symbol)/USD&interval=\(range.interval)&timezone=America/New_York&start_date=\(startString)&end_date=\(endString)&apikey=3d7e79efc6604a1fa500406353774531"
+    }
+    
+    private func parseDate(_ string: String) -> Date? {
+        
+        let dateTimeFormatter = DateFormatter()
+        dateTimeFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        dateTimeFormatter.timeZone = TimeZone(identifier: "America/New_York")
+
+        
+        let dateOnlyFormatter = DateFormatter()
+        dateOnlyFormatter.dateFormat = "yyyy-MM-dd"
+        dateOnlyFormatter.timeZone = TimeZone(identifier: "America/New_York")
+
+        return dateTimeFormatter.date(from: string)
+            ?? dateOnlyFormatter.date(from: string)
     }
     
     private let dateFormatter: DateFormatter = {

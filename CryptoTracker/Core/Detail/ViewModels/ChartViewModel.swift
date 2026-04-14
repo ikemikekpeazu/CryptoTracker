@@ -12,14 +12,21 @@ class ChartViewModel: ObservableObject {
     
     @Published var chartPoints: [ChartPoint] = []
     
-    private let chartDataService: CoinChartDataService
+    @Published var selectedRange: ChartRange = .oneDay {
+        didSet {
+            updateChart()
+        }
+    }
+    
+    private var chartDataService: CoinChartDataService
     private var cancellables = Set<AnyCancellable>()
     
     let coin: CoinModel
+    private let defaultRange: ChartRange = .oneDay
     
     init(coin: CoinModel) {
         self.coin = coin
-        self.chartDataService = CoinChartDataService(coin: coin)
+        self.chartDataService = CoinChartDataService(coin: coin, range: defaultRange)
         
         addSubscribers()
     }
@@ -31,6 +38,17 @@ class ChartViewModel: ObservableObject {
                 self?.chartPoints = returnedPoints
             }
             .store(in: &cancellables)
+    }
+    
+    private func updateChart() {
+//        cancellables.removeAll()
+        
+        chartDataService = CoinChartDataService(
+            coin: coin,
+            range: selectedRange
+        )
+        
+        addSubscribers()
     }
     
     var minY: Double {
