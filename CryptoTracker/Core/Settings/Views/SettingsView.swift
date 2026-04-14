@@ -12,10 +12,10 @@ struct SettingsView: View {
     @Environment(\.presentationMode) var presentationMode
     
     let defaultURL = URL(string: "http://www.google.com")!
-    let youtubeURL = URL(string: "https://www.youtube.com/c/swiftfulthinking")!
-    let coffeeURL = URL(string: "https://www.buymeacoffee.com/nicksarno")!
     let coingeckoURL = URL(string: "https://www.coingecko.com")!
-    let personalURL = URL(string: "https://www.nicksarno.com")!
+    let twelvedataURL = URL(string: "https://twelvedata.com")!
+    let personalURL = URL(string: "https://www.linkedin.com/in/ikem-ikekpeazu-92b2bb277")!
+    
     
     
     var body: some View {
@@ -27,9 +27,9 @@ struct SettingsView: View {
                 
                 // content
                 List {
-                    swiftfulThinkingSection
-                        .listRowBackground(Color.theme.background.opacity(0.5))
                     coinGeckoSection
+                        .listRowBackground(Color.theme.background.opacity(0.5))
+                    twelvedataSection
                         .listRowBackground(Color.theme.background.opacity(0.5))
                     developerSection
                         .listRowBackground(Color.theme.background.opacity(0.5))
@@ -61,28 +61,6 @@ struct SettingsView: View {
 
 extension SettingsView {
     
-    private var swiftfulThinkingSection: some View {
-        Section {
-            VStack(alignment: .leading) {
-                Image("logo")
-                    .resizable()
-                    .frame(width: 100, height: 100)
-                    .clipShape(RoundedRectangle(cornerRadius: 20))
-                Text("This app was made by following a @SwiftfulThinking course on YouTube. It uses MVVM Architecture, Combine, and CoreData!")
-                    .font(.callout)
-                    .fontWeight(.medium)
-                    .foregroundColor(Color.theme.accent)
-            }
-            .padding(.vertical)
-            Link("Subscribe on YouTube", destination: youtubeURL)
-            Link("Support his coffee addiction", destination: coffeeURL)
-        } header: {
-            Text("SWIFTFUL THINKING")
-        }
-        
-        
-    }
-    
     private var coinGeckoSection: some View {
         Section {
             VStack(alignment: .leading) {
@@ -103,10 +81,31 @@ extension SettingsView {
         }
     }
     
+    private var twelvedataSection: some View {
+        Section {
+            VStack(alignment: .leading) {
+                Image("twelvedata")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(height: 100)
+                    .clipShape(RoundedRectangle(cornerRadius: 20))
+                Text("The cryptocurrency data for the charts in this app comes from an API from Twelvedata.")
+                    .font(.callout)
+                    .fontWeight(.medium)
+                    .foregroundColor(Color.theme.accent)
+            }
+            .padding(.vertical)
+            Link("Visit Twelvedata", destination: twelvedataURL)
+        } header: {
+            Text("Twelvedata")
+        }
+    }
+    
+    
     private var developerSection: some View {
         Section {
             VStack(alignment: .leading) {
-                Image("logo")
+                Image("headshot")
                     .resizable()
                     .frame(width: 100, height: 100)
                     .clipShape(RoundedRectangle(cornerRadius: 20))

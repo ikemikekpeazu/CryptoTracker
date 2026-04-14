@@ -84,7 +84,7 @@ struct ChartView2: View {
                 }
                 
                 RuleMark(y: .value("Baseline", vm.minY - vm.padding * 0.2))
-                    .foregroundStyle(.gray.opacity(0.3))
+                    .foregroundStyle(Color.theme.secondaryText.opacity(0.3))
                     .lineStyle(StrokeStyle(lineWidth: 0.2))
                 
             }
@@ -97,7 +97,7 @@ struct ChartView2: View {
                 AxisMarks(values: .stride(by: xAxisStride, count: xAxisCount)) { value in
                     
                     AxisGridLine()
-                        .foregroundStyle(.gray.opacity(0.3))
+                        .foregroundStyle(Color.theme.secondaryText.opacity(0.3))
                     
                     AxisValueLabel {
                         if let date = value.as(Date.self) {
@@ -111,13 +111,13 @@ struct ChartView2: View {
                 AxisMarks(values: .automatic(desiredCount: 4)) { value in
                     
                     AxisGridLine()
-                        .foregroundStyle(.gray.opacity(0.3))
+                        .foregroundStyle(Color.theme.secondaryText.opacity(0.3))
                     
                     AxisValueLabel {
                         if let doubleValue = value.as(Double.self) {
                             Text(doubleValue, format: .currency(code: "USD"))
                                 .font(.caption2)
-                                .foregroundColor(.gray)
+                                .foregroundColor(Color.theme.secondaryText)
                         }
                     }
                 }

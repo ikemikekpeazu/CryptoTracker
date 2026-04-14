@@ -138,6 +138,7 @@ extension PortfolioView {
                 .opacity(showCheckmark ? 1.0 : 0.0)
             Button {
                 saveButtonPressed()
+//                vm.updatePortfolioPercentage()
             } label: {
                 Text("Save".uppercased())
             }
@@ -154,6 +155,7 @@ extension PortfolioView {
         
         // save to portfolio
         vm.updatePortfolio(coin: coin, amount: amount)
+        
         
         // show checkmark
         withAnimation(.easeIn) {

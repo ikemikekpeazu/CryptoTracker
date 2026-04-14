@@ -29,13 +29,13 @@ struct CryptoTrackerApp: App {
                 }
                 .environmentObject(vm)
                 
-                ZStack {
-                    if showLaunchView {
-                        LaunchView(showLaunchView: $showLaunchView)
-                            .transition(.move(edge: .leading))
-                    }
-                }
-                .zIndex(2.0)
+//                ZStack {
+//                    if showLaunchView {
+//                        LaunchView(showLaunchView: $showLaunchView)
+//                            .transition(.move(edge: .leading))
+//                    }
+//                }
+//                .zIndex(2.0)
             }
         }
     }
