@@ -22,6 +22,7 @@ struct HomeView: View {
     
     var body: some View {
         ZStack {
+            ChartView2(coin: DeveloperPreview.instance.coin)
             // background layer
             Color.theme.background
                 .ignoresSafeArea()
