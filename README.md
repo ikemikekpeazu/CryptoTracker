@@ -1,10 +1,10 @@
-# Crypto Tracker App
+# 📱 Crypto Tracker App
 
 ---
 
  Crypto Tracker is a real-time cryptocurrency tracker where users can monitor live market data, manage a personal portfolio, and view detailed price history via custom charts.
 
-## Technologies/Architecture
+## 💻 Technologies/Architecture
 
 - `Swift`
 - `SwiftUI`
