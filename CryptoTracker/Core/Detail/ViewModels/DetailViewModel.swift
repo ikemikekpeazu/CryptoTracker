@@ -80,7 +80,7 @@ class DetailViewModel: ObservableObject {
     
     private func createAdditionalArray(coinDetailModel: CoinDetailModel?, coinModel: CoinModel) -> [StatisticModel] {
         let high = coinModel.high24H?.asCurrencyWith6Decimals() ?? "n/a"
-        let highStat = StatisticModel(title: "24 High", value: high)
+        let highStat = StatisticModel(title: "24h High", value: high)
         
         let low = coinModel.low24H?.asCurrencyWith6Decimals() ?? "n/a"
         let lowStat = StatisticModel(title: "24h Low", value: low)
