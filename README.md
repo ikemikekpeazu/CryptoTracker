@@ -31,7 +31,7 @@
   - Additional Details section which has other price info, such as 24h High's and Lows, along with links to the coins website and reddit page
 - **Image Caching:** Implements a custom FileManager-based caching system to download and store coin logos locally, reducing API calls and improving performance.
 - **Advanced Search & Filtering:**
-- Search coins by name or symbol
-- Sort coin data by price, rank, or holdings
-- Pull to refresh feature to allow users to update coin market data in real-time
+  - Search coins by name or symbol
+  - Sort coin data by price, rank, or holdings
+  - Pull to refresh feature to allow users to update coin market data in real-time
 - **FaceID**: Implements LocalAuthentication framework to offer users FaceID to secure their portfolio holdings
