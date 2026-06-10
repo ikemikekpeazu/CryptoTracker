@@ -121,3 +121,14 @@ And this URL ultimately flowed into my network call.
 Then, in my ChartViewModel file, I created a view model for the chart. In the viewModel, I created an instance of the CoinChartDataService where I pass in the coin and range. And then I addSubscribers, which creates a pipeline from the ChartDataService publisher into chartPoints for the view. To account for when the user changes time intervals, I have a Published variable for the selected range that’s initially set to the .oneDay case in the enum – and when the selectedRange changes by the user pressing the new time interval in the view, updateChart will run, which will update the ChartDataService and rerun the publisher subscriber pipeline.
 
 <img width="512" height="436" alt="ChartVMCode" src="https://github.com/user-attachments/assets/1356014d-c3ca-49df-8be1-84901ff1411d" />
+
+Finally, in my view file, titled ChartView2, I had the UI for the chart. I used the Swift Charts framework to build it out. Due to all the Data Service and view model steps prior, all I had to do to display the chart was Chart(vm.chartPoints).
+
+In ChartView2:
+
+<img width="512" height="141" alt="ChartLinemark" src="https://github.com/user-attachments/assets/4c097831-cf3b-4e18-afe0-350b3d78e307" />
+
+LineMark creates individual “line marks”(or coordinates) that are then connected into a line. Due to the architecture as well, the exact x and y coordinates are easily accessible through point.date and point.value. I added some modifiers to the line as well just for styling. Above the chart, I have a Picker that the user can toggle to select what price timeframe they’d like to look at. The selection in the picker pipes to a selectedRange published variable that I created in my viewModel, and the adjustments to the chart happen accordingly.
+
+Chart and Picker:
+
