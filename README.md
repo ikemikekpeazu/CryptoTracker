@@ -4,13 +4,10 @@
 
  Crypto Tracker is a real-time cryptocurrency tracker where users can monitor live market data, manage a personal portfolio, and view detailed price history via custom charts.
  <p align="center">
-<table>
-<tr>   
-<td><img width="250" alt="CryptoHomeScreen" src="https://github.com/user-attachments/assets/51efcf19-ceb4-41f1-af2b-fb5a43e00467" /><td>
-<td><img width="250" alt="CryptoDetailView" src="https://github.com/user-attachments/assets/7b49dd51-7721-4229-b7aa-f565ff7e7ab4" /><td>
-<td><img width="250" alt="AddHoldingScreen" src="https://github.com/user-attachments/assets/4d418c23-d30e-47e5-800f-695936a2e817" /><td>
-</tr>
-</table>
+<img width="250" alt="CryptoHomeScreen" src="https://github.com/user-attachments/assets/51efcf19-ceb4-41f1-af2b-fb5a43e00467" style = "margin-right:20px;"/>
+<img width="250" alt="CryptoDetailView" src="https://github.com/user-attachments/assets/7b49dd51-7721-4229-b7aa-f565ff7e7ab4" />
+<img width="250" alt="AddHoldingScreen" src="https://github.com/user-attachments/assets/4d418c23-d30e-47e5-800f-695936a2e817" />
+
 </p>
 ## 💻 Technologies/Architecture
 
