@@ -147,3 +147,8 @@ I then had some modifiers on the chart for the axis and formatting. I tweaked ar
  <img height="300" alt="Bitcoin1Y" src="https://github.com/user-attachments/assets/fd21c7fa-7908-4129-a0ed-9e193e5a3f74" hspace="20" />
  <img height="300" alt="USDC10Y" src="https://github.com/user-attachments/assets/3d5c2e2d-f449-4daf-8f31-22ba39f2b810" hspace="20"/>
 </p>
+
+<p>
+ <img width="512" height="497" alt="ChartAxes" src="https://github.com/user-attachments/assets/d5ae98a3-8f5d-4471-9413-e72894bcc3a8" hspace="10"/>
+ <img width="411" height="512" alt="ChartComputedProperties" src="https://github.com/user-attachments/assets/26da58af-d33d-4e88-8541-a9cc11cda8a1" hspace="10"/>
+</p>
