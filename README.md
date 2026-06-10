@@ -1,3 +1,4 @@
+<img width="512" height="295" alt="ModelofData" src="https://github.com/user-attachments/assets/82b579c9-145d-4169-8d7d-03f6571e24c1" />
 # 📱 Crypto Tracker App
 
 ---
@@ -97,3 +98,5 @@ This feature has been very helpful for me whenever researching stocks, because y
 So to create the feature, I first needed to figure out how I was going to retrieve all the price data for the coins. The issue I ran into was that the CoinGecko API, the api that I was using, didn’t have any endpoints that gave precise enough price data. It was sufficient for pulling prices of individual coins and updating them periodically, and it did have an endpoint that gave interval prices for the past 7 days, but nothing quite in depth enough to create charts for all the different time frames.
 
 So I googled a bit and found an API by Twelvedata that had enough info. I used Postman to mess around with the endpoints a bit, just to see exactly how the JSON came back. Here’s a sample output that I added to my CoinChartModel file for reference:
+
+<img width="512" height="295" alt="ModelofData" src="https://github.com/user-attachments/assets/3a51810c-23ba-471f-b275-c217a35267fa" />
