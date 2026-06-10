@@ -84,3 +84,4 @@ By far the hardest feature to build on the app was the price chart on the Coin D
  <img width="300" alt="ChartScreen2" src="https://github.com/user-attachments/assets/1f32924f-3ea6-462f-8309-3070589535bc" hspace="30"/>
 </p>
 
+This feature allows the user to see a chart of the price history of a given crypto coin across different time intervals, including 1 day, 1 week, 1 month, 3 month, 6 month, year-to-date, 1 year, 2 years, 5 years, and 10 years. In addition, the user can hold their finger down on any point in the chart and get the exact coin price at that date and time – and drag to see how it changed over time.
