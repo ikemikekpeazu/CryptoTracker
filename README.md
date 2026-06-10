@@ -132,3 +132,7 @@ LineMark creates individual “line marks”(or coordinates) that are then conne
 
 Chart and Picker:
 
+
+<img width="246" height="263" alt="ChartAndPicker" src="https://github.com/user-attachments/assets/6df55e1c-9de9-4cc0-a3b3-83a398ee7b8d" />
+<img width="512" height="91" alt="PickerCode" src="https://github.com/user-attachments/assets/0f9af85d-97ec-4905-bcf6-dfa6f87d7600" />
+
