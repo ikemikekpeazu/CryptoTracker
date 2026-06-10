@@ -52,7 +52,13 @@
 - iOS 17+
 - Swift 6
 
-## Requirements
+## 🎥 Live Demo
+
+## 🧩 Architecture Deep Dive
+
+To go into the architecture more in depth, this app uses MVVM architecture but with a slight wrinkle. With plain MVVM, the file breakdown within the app would consist solely of models that represent the data, views that display the UI, and then a view model(or multiple) that handle the business logic in the app and how the data in the app must be manipulated in order to be presented in the view. However, this crypto app adds a Data Service layer, in which data is retrieved from the internet. This app requires a lot of networking – retrieving live coin information from the internet, updated prices, updated market data – so separating that logic from the view model within the app, which is focusing more on manipulating data presented within the UI, makes for much cleaner architecture. In addition, not only is the app pulling all this information from the internet, it’s doing so repeatedly – whenever the user pulls to refresh, or clicks on a coin to view it in more detail, or clicks the different time interval toggles on the chart – which makes separating these networking concerns from the view model much more important.
+
+So to walk through it, here’s some code from the CoinDataService, the main Data Service within the app: 
 
 
 
