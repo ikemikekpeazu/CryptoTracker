@@ -110,7 +110,7 @@ Then, keeping consistent with the architecture in the rest of the app,  I create
 
 So here in my CoinChartDataService, similar to the other data services in the app, I download data from the URL, but then I also map the data into chart points that just represent dates and values in order to make the chart data easier to manipulate for the viewModel and view. One obstacle that I had to overcome here was that, for this feature, the actual data that you pull for the coin varies based on the time interval that the user selects. Start date and end date change, which is an obvious one. But you also have to change the time interval range depending on the time interval selected. For example, if you’re pulling data for a 1 day chart, having chart prices for every 5-10 minutes makes sense. But if you have a 5 year or 10 year chart, pulling data every 5-10 minutes across that time frame would very easily become too slow and costly(the API actually didn’t even do it at a certain point). So I tweaked around in Postman and also a bit in Xcode to see what interval ranges worked best depending on the time frame. Once I figured it out, I then made a ChartRange enum that had all the different time frame cases( 1D, 1W, 1M etc.) and I created startDate, endDate, and interval variables based on those cases, and then those variables got plugged into a createURL function that I created, which gave me a dynamic API call:
 
-<p>
+
 <img width="512" height="250" alt="ChartRangeEnum" src="https://github.com/user-attachments/assets/25284f71-b263-44c8-b5ca-e6703d600f3d" />
 <img width="512" height="455" alt="StartDateProperty" src="https://github.com/user-attachments/assets/274d4fb2-a4f2-4f5f-ad9c-4921191f8869" />
-</p>
+
