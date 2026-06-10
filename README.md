@@ -62,5 +62,8 @@ So to walk through it, here’s some code from the CoinDataService, the main Dat
 
 <img width="700" alt="CoinDataServiceScreenShot" src="https://github.com/user-attachments/assets/653edfd2-cb35-47c4-9528-cab2d74d7c4f" />
 
+As seen above, this data service is downloading all the crypto coins needed from the app from the internet and converting them into an array of coinModels.
 
+<img width="625" height="400" alt="HomeViewModelScreenshot" src="https://github.com/user-attachments/assets/ee02e037-aa37-4c0d-8998-da8e8c2b92a9" />
 
+Then, in the view model, you create a singleton of the CoinDataService.(There’s also other data services listed as this was done multiple times) then create subscribers in the viewModel that listen to it.
