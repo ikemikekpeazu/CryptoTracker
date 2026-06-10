@@ -80,7 +80,7 @@ As seen above, a similar pattern exists for the other data services/publishers. 
 By far the hardest feature to build on the app was the price chart on the Coin DetailView.
 
 <p align="center">
- <img width="404" height="442" alt="ChartScreen1" src="https://github.com/user-attachments/assets/b38e33bf-e262-4b37-9b78-5ea4dc3302a3" hspace="30"/>
- <img width="436" height="458" alt="ChartScreen2" src="https://github.com/user-attachments/assets/1f32924f-3ea6-462f-8309-3070589535bc" hspace="30"/>
+ <img width="300" alt="ChartScreen1" src="https://github.com/user-attachments/assets/b38e33bf-e262-4b37-9b78-5ea4dc3302a3" hspace="30"/>
+ <img width="300" alt="ChartScreen2" src="https://github.com/user-attachments/assets/1f32924f-3ea6-462f-8309-3070589535bc" hspace="30"/>
 </p>
 
