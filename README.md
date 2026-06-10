@@ -159,8 +159,8 @@ The final main element to this chart that I added was to allow users to be able 
 
 After completing the chart implementation, I inserted it into the DetailView, passing in the viewModel coin.
 <p>
-<img width="477" height="512" alt="DetailViewStruct" src="https://github.com/user-attachments/assets/9922a9f8-fe26-4d84-9f81-f3a1e6a33959" />
-<img width="236" height="512" alt="DetailViewScreen" src="https://github.com/user-attachments/assets/2cd99208-c4f8-42e9-8fba-321bc4b612aa" />
+<img width="477" height="512" alt="DetailViewStruct" src="https://github.com/user-attachments/assets/9922a9f8-fe26-4d84-9f81-f3a1e6a33959" hspace="20" />
+<img width="236" height="512" alt="DetailViewScreen" src="https://github.com/user-attachments/assets/2cd99208-c4f8-42e9-8fba-321bc4b612aa" hspace="20"/>
 </p>
 
 
