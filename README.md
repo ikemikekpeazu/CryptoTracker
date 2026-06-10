@@ -75,6 +75,9 @@ So what happens is on the init you addSubscribers and then the publishers get cr
 As seen above, a similar pattern exists for the other data services/publishers. So what these two pipelines do is that they take the updated data from the prior pipeline and make it the publisher of the next pipeline and then the subscription listens to it. This connects all the publisher subscribers together and makes one large pipeline where the first publisher/subscriber fires, allCoins is changed, then since allCoins changed that makes the next publisher/subscriber fire, then that ultimately changes portfolioCoins, which is connected to the last publisher through .combineLatest, so then the last publisher/subscriber fires, all combining to successfully pull/update the necessary data then reflect it within the view.
 
 
+
+
+
 ## 📈 Feature Deep Dive: Price Chart on Detail View
 
 By far the hardest feature to build on the app was the price chart on the Coin DetailView.
