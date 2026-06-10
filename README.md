@@ -40,3 +40,14 @@
   - Sort coin data by price, rank, or holdings
   - Pull to refresh feature to allow users to update coin market data in real-time
 - **FaceID**: Implements LocalAuthentication framework to offer users FaceID to secure their portfolio holdings
+
+## Setup Instructions
+1. Clone the Repository
+2. Open the Project in Xcode
+3. Select an iOS Simulator and Run
+4. For face ID on the simulator, make sure that FaceID is enrolled by going to Features ->FaceID -> Enrolled. To then unlock with FaceID, go to Features -> FaceID -> Matching Face. (To disable FaceID in the app, you can just change the hasAuthenticated @State variable in the HomeView to true.)
+
+## Requirements
+- Xcode 26+
+- iOS 17+
+- Swift 6
