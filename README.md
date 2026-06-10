@@ -156,3 +156,12 @@ I then had some modifiers on the chart for the axis and formatting. I tweaked ar
 The final main element to this chart that I added was to allow users to be able to press on point in the line chart and get more accurate price and time data. I did this through creating an optional selectedDate variable that monitored whether the user has pressed on the chart or not. I put this variable in as a binding into the chartXSelection modifier which checks whether or not the user presses on the chart. So when selectedDate has a value, I create a vertical blue line at that point in the X axis. And then to get the exact point on the chart that the user is pressing, I used the .min(by:   on the ChartPoints array to find the chartpoint that had a date that was closest to the selectedDate. And then from there, I made do “points” – two dots. One smaller one that was blue and a larger one that was black. And this gave the effect of a blue dot that had a blue outline to it. I thought that this made the dot look nicer and made it look more visible as one scrubbed it across the line. I also used this selectedDate logic and point to put exact date and price data laid out nicely in between the picker timeframe toggle and the line chart. I added the selectedDate var to my ternary operator for the foregroundStyle of the chart so that I could make the chart turn blue when the user pressed on it.
 
 <img width="300" alt="ChartScreen2" src="https://github.com/user-attachments/assets/1f32924f-3ea6-462f-8309-3070589535bc" hspace="30"/>
+
+After completing the chart implementation, I inserted it into the DetailView, passing in the viewModel coin.
+<p>
+<img width="477" height="512" alt="DetailViewStruct" src="https://github.com/user-attachments/assets/9922a9f8-fe26-4d84-9f81-f3a1e6a33959" />
+<img width="236" height="512" alt="DetailViewScreen" src="https://github.com/user-attachments/assets/2cd99208-c4f8-42e9-8fba-321bc4b612aa" />
+</p>
+
+
+
