@@ -51,3 +51,8 @@
 - Xcode 26+
 - iOS 17+
 - Swift 6
+
+## Requirements
+
+
+
