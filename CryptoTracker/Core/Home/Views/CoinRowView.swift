@@ -49,7 +49,7 @@ extension CoinRowView {
                 .frame(width: 30, height: 30)
                 .rotationEffect(.degrees(shake ? -20 : 20))
                 .animation(
-                    .easeInOut(duration: 0.1)
+                    .easeInOut(duration: 0.15)
                         .repeatForever(autoreverses: true),
                     value: shake
                     
@@ -69,7 +69,7 @@ extension CoinRowView {
         VStack(alignment: .trailing) {
             Text(coin.currentHoldingsValue.asCurrencyWith2Decimals())
                 .bold()
-            Text((coin.currentHoldings ?? 0).asPercentString())
+            Text((coin.currentHoldings ?? 0).asNumberString())
         }
         .foregroundColor(Color.theme.accent)
     }
