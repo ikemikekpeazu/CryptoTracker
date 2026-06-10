@@ -91,3 +91,9 @@ For this feature, I took a lot of inspiration from the stock charts that I would
 <img width="236" height="512" alt="AppleStockScreen1" src="https://github.com/user-attachments/assets/bcec93e8-a076-49c9-b96f-fcd5e89047c1" hspace="30"/>
 <img width="236" height="512" alt="AppleStockScreen2" src="https://github.com/user-attachments/assets/cdd6f390-c2f2-4e8c-9f01-0391072f4330" hspace="30"/>
 <p>
+
+This feature has been very helpful for me whenever researching stocks, because you really key into how the stock moves more precisely, which really helps with analysis. Thus, it was a feature that I thought would be great to add to the crypto app.
+
+So to create the feature, I first needed to figure out how I was going to retrieve all the price data for the coins. The issue I ran into was that the CoinGecko API, the api that I was using, didn’t have any endpoints that gave precise enough price data. It was sufficient for pulling prices of individual coins and updating them periodically, and it did have an endpoint that gave interval prices for the past 7 days, but nothing quite in depth enough to create charts for all the different time frames.
+
+So I googled a bit and found an API by Twelvedata that had enough info. I used Postman to mess around with the endpoints a bit, just to see exactly how the JSON came back. Here’s a sample output that I added to my CoinChartModel file for reference:
