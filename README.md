@@ -74,7 +74,7 @@ So what happens is on the init you addSubscribers and then the publishers get cr
 
 As seen above, a similar pattern exists for the other data services/publishers. So what these two pipelines do is that they take the updated data from the prior pipeline and make it the publisher of the next pipeline and then the subscription listens to it. This connects all the publisher subscribers together and makes one large pipeline where the first publisher/subscriber fires, allCoins is changed, then since allCoins changed that makes the next publisher/subscriber fire, then that ultimately changes portfolioCoins, which is connected to the last publisher through .combineLatest, so then the last publisher/subscriber fires, all combining to successfully pull/update the necessary data then reflect it within the view.
 
-<br>
+<br><br>
 
 ## 📈 Feature Deep Dive: Price Chart on Detail View
 
@@ -159,9 +159,11 @@ The final main element to this chart that I added was to allow users to be able 
 <img width="300" alt="ChartScreen2" src="https://github.com/user-attachments/assets/1f32924f-3ea6-462f-8309-3070589535bc" hspace="30"/>
 
 After completing the chart implementation, I inserted it into the DetailView, passing in the viewModel coin.
+
+Final Result:
 <p>
-<img width="477" height="512" alt="DetailViewStruct" src="https://github.com/user-attachments/assets/9922a9f8-fe26-4d84-9f81-f3a1e6a33959" hspace="20" />
-<img width="236" height="512" alt="DetailViewScreen" src="https://github.com/user-attachments/assets/2cd99208-c4f8-42e9-8fba-321bc4b612aa" hspace="20"/>
+<img width="236" height="512" alt="DetailViewScreen" src="https://github.com/user-attachments/assets/2cd99208-c4f8-42e9-8fba-321bc4b612aa" hspace="30"/>
+<img width="477" height="512" alt="DetailViewStruct" src="https://github.com/user-attachments/assets/9922a9f8-fe26-4d84-9f81-f3a1e6a33959" hspace="20"/>
 </p>
 
 
