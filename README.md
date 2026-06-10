@@ -144,6 +144,6 @@ In ChartViewModel:
 I then had some modifiers on the chart for the axis and formatting. I tweaked around with this a lot. I used computed properties in the viewModel as well to get min and max values of the data, along with setting padding. To decide how many axis lines I wanted, along with what they should say, I used the chartRange enum that I had to create stride and count variables that iterated through all the possibilities. For example, for the 1d interval chart each label had the hour on it. And then for the longer interval charts like 1Y, it just said the month. And then for 10Y, all I put was the year.
 
 <p>
- <img width="293" height="313" alt="Bitcoin1Y" src="https://github.com/user-attachments/assets/fd21c7fa-7908-4129-a0ed-9e193e5a3f74" hspace="20" />
- <img width="321" height="342" alt="USDC10Y" src="https://github.com/user-attachments/assets/3d5c2e2d-f449-4daf-8f31-22ba39f2b810" hspace="20"/>
+ <img height="300" alt="Bitcoin1Y" src="https://github.com/user-attachments/assets/fd21c7fa-7908-4129-a0ed-9e193e5a3f74" hspace="20" />
+ <img height="300" alt="USDC10Y" src="https://github.com/user-attachments/assets/3d5c2e2d-f449-4daf-8f31-22ba39f2b810" hspace="20"/>
 </p>
