@@ -1,4 +1,3 @@
-<img width="512" height="295" alt="ModelofData" src="https://github.com/user-attachments/assets/82b579c9-145d-4169-8d7d-03f6571e24c1" />
 # 📱 Crypto Tracker App
 
 ---
