@@ -116,3 +116,8 @@ So here in my CoinChartDataService, similar to the other data services in the ap
 </p>
 <img width="512" height="100" alt="CreateURL" src="https://github.com/user-attachments/assets/0c0df988-1cab-4e6a-8ff0-e31ed1ac005f" />
 
+And this URL ultimately flowed into my network call.
+
+Then, in my ChartViewModel file, I created a view model for the chart. In the viewModel, I created an instance of the CoinChartDataService where I pass in the coin and range. And then I addSubscribers, which creates a pipeline from the ChartDataService publisher into chartPoints for the view. To account for when the user changes time intervals, I have a Published variable for the selected range that’s initially set to the .oneDay case in the enum – and when the selectedRange changes by the user pressing the new time interval in the view, updateChart will run, which will update the ChartDataService and rerun the publisher subscriber pipeline.
+
+<img width="512" height="436" alt="ChartVMCode" src="https://github.com/user-attachments/assets/1356014d-c3ca-49df-8be1-84901ff1411d" />
