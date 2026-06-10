@@ -132,7 +132,18 @@ LineMark creates individual “line marks”(or coordinates) that are then conne
 
 Chart and Picker:
 
-
 <img width="246" height="263" alt="ChartAndPicker" src="https://github.com/user-attachments/assets/6df55e1c-9de9-4cc0-a3b3-83a398ee7b8d" />
 <img width="512" height="91" alt="PickerCode" src="https://github.com/user-attachments/assets/0f9af85d-97ec-4905-bcf6-dfa6f87d7600" />
 
+One of the details that you’ll notice within most stock charts like this in various applications is that, if the stock has a positive price delta for that interval, the line on the chart is green, and then if the stock has a negative price delta for that interval, the line on the chart is red. So I implemented that feature as well through adding a foregroundStyle with a ternary operator. I had a computed property priceChange in my ChartViewModel that would get the price delta between the first and last chartpoint in the array, and then I just had the ternary operator check for whether it was > 0(I’ll explain the Color blue change condition later).
+
+In ChartViewModel:
+
+<img width="512" height="81" alt="PriceChange" src="https://github.com/user-attachments/assets/17958004-368c-4a51-a3b9-06704c0a2599" />
+
+I then had some modifiers on the chart for the axis and formatting. I tweaked around with this a lot. I used computed properties in the viewModel as well to get min and max values of the data, along with setting padding. To decide how many axis lines I wanted, along with what they should say, I used the chartRange enum that I had to create stride and count variables that iterated through all the possibilities. For example, for the 1d interval chart each label had the hour on it. And then for the longer interval charts like 1Y, it just said the month. And then for 10Y, all I put was the year.
+
+<p>
+ <img width="293" height="313" alt="Bitcoin1Y" src="https://github.com/user-attachments/assets/fd21c7fa-7908-4129-a0ed-9e193e5a3f74" hspace="20" />
+ <img width="321" height="342" alt="USDC10Y" src="https://github.com/user-attachments/assets/3d5c2e2d-f449-4daf-8f31-22ba39f2b810" hspace="20"/>
+</p>
