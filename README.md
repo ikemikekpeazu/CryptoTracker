@@ -99,3 +99,7 @@ So to create the feature, I first needed to figure out how I was going to retrie
 So I googled a bit and found an API by Twelvedata that had enough info. I used Postman to mess around with the endpoints a bit, just to see exactly how the JSON came back. Here’s a sample output that I added to my CoinChartModel file for reference:
 
 <img width="512" height="295" alt="ModelofData" src="https://github.com/user-attachments/assets/3a51810c-23ba-471f-b275-c217a35267fa" />
+
+I used this to create a model of the data. The ChartPoint struct isn’t coming directly from the downloaded data from the API, but rather, is a struct that I created to represent an individual chart point that I used later within the data service, view model, and view. All the key names of the properties that I needed were one word and lowercase so I didn’t need an enum with CodingKeys:
+
+<img width="512" height="340" alt="CoinChartModelScreen" src="https://github.com/user-attachments/assets/990f1792-d996-4c8b-b4cb-3c0cc6023241" />
